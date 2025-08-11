@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Český nakupující: Interaktivní průvodce</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app">
+        <!-- Navigace -->
+        <nav class="nav hidden" id="navigation">
+            <div class="nav__container">
+                <div class="nav__brand">Český nakupující</div>
+                <div class="nav__buttons">
+                    <button class="btn btn--sm nav__btn" data-section="intro">Úvod</button>
+                    <button class="btn btn--sm nav__btn" data-section="inflation">Inflace</button>
+                    <button class="btn btn--sm nav__btn" data-section="generations">Generace</button>
+                    <button class="btn btn--sm nav__btn" data-section="missions">Nákupní mise</button>
+                    <button class="btn btn--sm nav__btn" data-section="promos">Akce</button>
+                    <button class="btn btn--sm nav__btn" data-section="brands">Privátky</button>
+                    <button class="btn btn--sm nav__btn" data-section="stores">Obchody</button>
+                    <button class="btn btn--sm nav__btn" data-section="quiz">Kvíz</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Úvodní obrazovka -->
+        <section class="section active" id="intro">
+            <div class="hero">
+                <div class="hero__content">
+                    <h1 class="hero__title">Český nakupující</h1>
+                    <p class="hero__subtitle">Jak inflace změnila české nakupování</p>
+                    <p class="hero__description">
+                        Objevte, jak vysoká inflace ovlivnila nákupní chování Čechů a jaké trendy formují současný maloobchod.
+                    </p>
+                    <button class="btn btn--primary btn--lg" id="start-guide">Spustit interaktivní průvodce</button>
+                </div>
+                <div class="hero__visual">
+                    <div class="shopping-icons">
+                        <div class="shopping-icon">🛒</div>
+                        <div class="shopping-icon">💳</div>
+                        <div class="shopping-icon">📱</div>
+                        <div class="shopping-icon">🏷️</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inflace a její dopad -->
+        <section class="section" id="inflation">
+            <div class="container">
+                <h2 class="section__title">Inflace a její dopad na nakupování</h2>
+                <div class="grid grid--2">
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Vývoj inflace 2020-2024</h3>
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="inflation-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-panel">
+                        <h3>Co je "downtrading"?</h3>
+                        <p>Downtrading je jev, kdy spotřebitelé v reakci na rostoucí ceny přecházejí k levnějším alternativám:</p>
+                        <ul class="trend-list">
+                            <li class="trend-item">🔽 Přesun k diskontům</li>
+                            <li class="trend-item">🏷️ Vyhledávání akcí</li>
+                            <li class="trend-item">🏪 Privátní značky</li>
+                            <li class="trend-item">📦 Menší, častější nákupy</li>
+                        </ul>
+                        <div class="impact-meter">
+                            <div class="impact-meter__label">Dopad na kupní sílu</div>
+                            <div class="impact-meter__bar">
+                                <div class="impact-meter__fill" style="width: 75%"></div>
+                            </div>
+                            <div class="impact-meter__text">Významný pokles</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn--primary section__next" data-next="generations">Pokračovat na generace</button>
+            </div>
+        </section>
+
+        <!-- Generační profily -->
+        <section class="section" id="generations">
+            <div class="container">
+                <h2 class="section__title">Generační profily českých nakupujících</h2>
+                <div class="generation-tabs">
+                    <button class="generation-tab active" data-generation="rebuilders">Rebuilders (72+)</button>
+                    <button class="generation-tab" data-generation="baby_boomers">Baby Boomers (57-71)</button>
+                    <button class="generation-tab" data-generation="generation_x">Generation X (42-56)</button>
+                    <button class="generation-tab" data-generation="millennials">Millennials (30-41)</button>
+                    <button class="generation-tab" data-generation="ibrains">iBrains (do 29)</button>
+                </div>
+                <div class="generation-content" id="generation-content">
+                    <!-- Dynamický obsah se načítá přes JavaScript -->
+                </div>
+                <button class="btn btn--primary section__next" data-next="missions">Pokračovat na nákupní mise</button>
+            </div>
+        </section>
+
+        <!-- Shopping Missions -->
+        <section class="section" id="missions">
+            <div class="container">
+                <h2 class="section__title">Změna nákupních misí</h2>
+                <p class="section__intro">Češi mění způsob nakupování - místo velkých nákupů do zásoby preferují častější menší nákupy a lov akcí.</p>
+                <div class="missions-grid">
+                    <div class="mission-card declining">
+                        <div class="mission-icon">📦</div>
+                        <h3>Velké zásobování</h3>
+                        <div class="trend-indicator">📉 Klesá</div>
+                        <p>Velké nákupy pro dlouhodobou spotřebu ustupují do pozadí</p>
+                    </div>
+                    <div class="mission-card declining">
+                        <div class="mission-icon">🛒</div>
+                        <h3>Zásobování</h3>
+                        <div class="trend-indicator">📉 Stagnuje</div>
+                        <p>Střední nákupy do zásoby už nejsou tak populární</p>
+                    </div>
+                    <div class="mission-card growing">
+                        <div class="mission-icon">🥬</div>
+                        <h3>Doplnění čerstvých potravin</h3>
+                        <div class="trend-indicator">📈 Roste</div>
+                        <p>Častější návštěvy obchodů pro čerstvé potraviny</p>
+                    </div>
+                    <div class="mission-card growing">
+                        <div class="mission-icon">🎯</div>
+                        <h3>Výběrové nákupy</h3>
+                        <div class="trend-indicator">📈 Roste</div>
+                        <p>Cílené vyhledávání akčních nabídek a slev</p>
+                    </div>
+                </div>
+                <button class="btn btn--primary section__next" data-next="promos">Pokračovat na akční nabídky</button>
+            </div>
+        </section>
+
+        <!-- Akční fenomén -->
+        <section class="section" id="promos">
+            <div class="container">
+                <h2 class="section__title">Český fenomén: Lov akcí</h2>
+                <div class="promo-stats">
+                    <div class="stat-big">
+                        <div class="stat-number">40,1%</div>
+                        <div class="stat-label">výdajů na akční zboží v ČR</div>
+                        <div class="stat-trend">📈 Růst z 33% v roce 2020</div>
+                    </div>
+                </div>
+                <div class="grid grid--2">
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Mezinárodní srovnání</h3>
+                            <div class="chart-container" style="position: relative; height: 250px;">
+                                <canvas id="promo-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="promo-info">
+                        <h3>Segmenty nakupujících</h3>
+                        <div class="promo-segments">
+                            <div class="segment-item">
+                                <div class="segment-bar">
+                                    <div class="segment-fill" style="width: 70%"></div>
+                                </div>
+                                <div class="segment-label">Promo Seeker: až 70% akcí</div>
+                            </div>
+                            <div class="segment-item">
+                                <div class="segment-bar">
+                                    <div class="segment-fill" style="width: 45%"></div>
+                                </div>
+                                <div class="segment-label">Průměrný Čech: 40% akcí</div>
+                            </div>
+                            <div class="segment-item">
+                                <div class="segment-bar">
+                                    <div class="segment-fill" style="width: 20%"></div>
+                                </div>
+                                <div class="segment-label">Brand loyal: 20% akcí</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn--primary section__next" data-next="brands">Pokračovat na privátní značky</button>
+            </div>
+        </section>
+
+        <!-- Privátní značky -->
+        <section class="section" id="brands">
+            <div class="container">
+                <h2 class="section__title">Růst privátních značek</h2>
+                <div class="brand-growth">
+                    <div class="growth-visual">
+                        <div class="growth-bar">
+                            <div class="growth-year">2020</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 68%"></div>
+                                <div class="progress-label">27,4%</div>
+                            </div>
+                        </div>
+                        <div class="growth-bar">
+                            <div class="growth-year">2024</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                                <div class="progress-label">30,1%</div>
+                            </div>
+                        </div>
+                        <div class="growth-arrow">📈 +2,7 %</div>
+                    </div>
+                </div>
+                <div class="brand-examples">
+                    <h3>Známé privátní značky</h3>
+                    <div class="brand-grid">
+                        <div class="brand-item">
+                            <div class="brand-logo">🟡</div>
+                            <div class="brand-name">Pilos (Lidl)</div>
+                        </div>
+                        <div class="brand-item">
+                            <div class="brand-logo">🟠</div>
+                            <div class="brand-name">Boni (Penny)</div>
+                        </div>
+                        <div class="brand-item">
+                            <div class="brand-logo">🔴</div>
+                            <div class="brand-name">Clever (Billa)</div>
+                        </div>
+                        <div class="brand-item">
+                            <div class="brand-logo">🔵</div>
+                            <div class="brand-name">K-Classic (Kaufland)</div>
+                        </div>
+                        <div class="brand-item">
+                            <div class="brand-logo">🟢</div>
+                            <div class="brand-name">Albert Basic</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn--primary section__next" data-next="stores">Pokračovat na typy obchodů</button>
+            </div>
+        </section>
+
+        <!-- Typy obchodů -->
+        <section class="section" id="stores">
+            <div class="container">
+                <h2 class="section__title">Změny v preferencích obchodů</h2>
+                <div class="stores-grid">
+                    <div class="store-card declining">
+                        <div class="store-icon">🏬</div>
+                        <h3>Hypermarkety</h3>
+                        <div class="store-trend">📉 Mírný pokles</div>
+                        <div class="store-share">36% podíl</div>
+                        <p>Stále největší podíl, ale ztrácejí na významu</p>
+                    </div>
+                    <div class="store-card growing">
+                        <div class="store-icon">🏪</div>
+                        <h3>Diskonty</h3>
+                        <div class="store-trend">📈 Posilují</div>
+                        <div class="store-share">Rostoucí podíl</div>
+                        <p>Růst v podílu na výdajích i frekvenci nákupů</p>
+                    </div>
+                    <div class="store-card declining">
+                        <div class="store-icon">🏬</div>
+                        <h3>Supermarkety</h3>
+                        <div class="store-trend">📉 Mírný pokles</div>
+                        <div class="store-share">Konkurence</div>
+                        <p>Čelí konkurenci diskontů</p>
+                    </div>
+                    <div class="store-card growing">
+                        <div class="store-icon">📱</div>
+                        <h3>Online</h3>
+                        <div class="store-trend">📈 Rychlý růst</div>
+                        <div class="store-share">+18,2% v 2024</div>
+                        <p>Nejrychlejší růst segmentu</p>
+                    </div>
+                </div>
+                <button class="btn btn--primary section__next" data-next="quiz">Pokračovat na kvíz</button>
+            </div>
+        </section>
+
+        <!-- Kvíz -->
+        <section class="section" id="quiz">
+            <div class="container">
+                <h2 class="section__title">Jaký typ nakupujícího jsi ty?</h2>
+                <div class="quiz-container" id="quiz-container">
+                    <div class="quiz-progress">
+                        <div class="quiz-progress__bar">
+                            <div class="quiz-progress__fill" id="quiz-progress"></div>
+                        </div>
+                        <div class="quiz-progress__text">Otázka <span id="current-question">1</span> z 3</div>
+                    </div>
+                    <div class="quiz-question" id="quiz-question">
+                        <!-- Dynamické otázky -->
+                    </div>
+                </div>
+                <div class="quiz-result hidden" id="quiz-result">
+                    <!-- Výsledek kvízu -->
+                </div>
+                <div class="comparison-section">
+                    <h3>Srovnání se zahraničím</h3>
+                    <div class="comparison-grid">
+                        <div class="country-card">
+                            <div class="country-flag">🇨🇿</div>
+                            <h4>Česká republika</h4>
+                            <div class="country-stats">
+                                <div class="stat">Akce: 40,1%</div>
+                                <div class="stat">Privátky: 30,1%</div>
+                            </div>
+                        </div>
+                        <div class="country-card">
+                            <div class="country-flag">🇵🇱</div>
+                            <h4>Polsko</h4>
+                            <div class="country-stats">
+                                <div class="stat">Akce: 53,0%</div>
+                                <div class="stat">Privátky: 30,3%</div>
+                            </div>
+                        </div>
+                        <div class="country-card">
+                            <div class="country-flag">🇩🇪</div>
+                            <h4>Německo</h4>
+                            <div class="country-stats">
+                                <div class="stat">Akce: 25,0%</div>
+                                <div class="stat">Privátky: 39,6%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn--secondary" data-section="intro">Zpět na začátek</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
